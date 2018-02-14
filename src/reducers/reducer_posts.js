@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_POSTS } from '../actions';
+import { FETCH_POSTS, CREATE_POST } from '../actions';
 // remember to use {} when importing a specific variable, function from a file
 // no need to speciy index.js since we are importing it.
 
