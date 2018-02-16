@@ -1,10 +1,14 @@
 import _ from 'lodash';
-import { FETCH_POSTS, FETCH_POST } from '../actions';
+import { FETCH_POSTS, FETCH_POST, DELETE_POST } from '../actions';
 // remember to use {} when importing a specific variable, function from a file
 // no need to speciy index.js since we are importing it.
 
 export default function(state = {}, action) {
   switch (action.type) {
+    case DELETE_POST:
+      // _.omit will remove the object with the id (action.payload)
+      // from the current global state
+      return _.omit(state, action.payload);
     case FETCH_POSTS:
       return _.mapKeys(action.payload.data, 'id');
     case FETCH_POST:

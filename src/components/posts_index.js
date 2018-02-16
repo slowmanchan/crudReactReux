@@ -16,11 +16,13 @@ class PostsIndex extends Component {
       // use lodashs map method to iterate over objects
       return _.map(this.props.posts, post => {
         return (
-          <li className='list-group-item' key={post.id}>
-            <h4>{post.title}</h4>
-            <p>{post.content}</p>
-          </li>
-        )
+            <li className='list-group-item' key={post.id}>
+              <Link to={`/posts/${post.id}`}>
+                <h4>{post.title}</h4>
+                <p>{post.content}</p>
+              </Link>
+            </li>
+            )
       })
   }
 
