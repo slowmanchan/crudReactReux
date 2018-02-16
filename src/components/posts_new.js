@@ -40,7 +40,12 @@ class PostsNew extends Component {
   }
 
   onSubmit(values) {
-    this.props.createPost(values);
+    // pass a callback so that we can redirect to index when
+    // post request is complete.  use history object from react
+    // router and push the path you want.
+    this.props.createPost(values, () => {
+      this.props.history.push('/');
+    });
   }
 
   render() {
@@ -68,7 +73,7 @@ class PostsNew extends Component {
         <button type='submit' className='btn btn-secondary'>Submit</button>
         <Link to='/' className='btn btn-danger'>
           Cancel
-          </Link>
+        </Link>
       </form>
     )
   }
