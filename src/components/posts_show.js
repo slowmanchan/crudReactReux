@@ -15,7 +15,7 @@ class PostsShow extends Component {
   onDeleteClick() {
     const { id } = this.props.match.params;
     this.props.deletePost(id, () => {
-      this.props.history.push('/');
+      this.props.history.push('/')
     });
   }
   // render will fire off as soon as component is mounted

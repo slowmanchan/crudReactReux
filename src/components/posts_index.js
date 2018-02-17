@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions';
+import { fetchPosts, deletePost } from '../actions';
 import { Link } from 'react-router-dom';
 // Link is like the classic <a></a>
 
@@ -21,9 +21,17 @@ class PostsIndex extends Component {
                 <h4>{post.title}</h4>
                 <p>{post.content}</p>
               </Link>
+              <button onClick={this.onDeleteClick.bind(this, post.id)}>x</button>
             </li>
             )
       })
+  }
+
+  onDeleteClick(id) {
+
+    this.props.deletePost(id, () => {
+      this.props.history.push('/');
+    });
   }
 
   render() {
@@ -50,4 +58,4 @@ function mapStateToProps(state) {
 // mapStateToProps)
 // we can pass just the action creator as the 2nd arg to connect (instead of
 // mapDispatch to props ) connect wil lmake the connection to dispatch for us automattically.
-export default connect(mapStateToProps, { fetchPosts })(PostsIndex);
+export default connect(mapStateToProps, { fetchPosts, deletePost })(PostsIndex);

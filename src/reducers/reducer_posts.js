@@ -18,7 +18,9 @@ export default function(state = {}, action) {
       // newState[post.id] = post;
       // return newState;
       // es6 version:
-      // key interpolation > create a object key [action.payload.data.id]
+      // allows computed property names eg. let prop = 'prop'; { [prop]: 'value' } not possible 
+      // in es5 { prop: 'value' } == { 'prop' : 'value' }
+      // Object key interpolation > create a object key [action.payload.data.id]
       // with action.payload.data as its value
       return { ...state, [action.payload.data.id]: action.payload.data };
 
